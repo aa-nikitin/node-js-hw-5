@@ -16,12 +16,19 @@ app.use(bodyParser.text());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+app.use((req, res, next) => {
+  // console.log(req.body);
+  if (typeof req.body === 'string') req.body = JSON.parse(req.body);
+  // console.log(req.body);
+  next();
+});
+
 app.use(cookieParser());
 app.use(
   session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
     secret: 'key-secret',
-    key: 'session-key',
+    key: 'access_token',
     cookie: {
       path: '/',
       httpOnly: true,
