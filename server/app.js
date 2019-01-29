@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 require('./models');
 
 app.use(bodyParser.text());
+app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -20,9 +21,12 @@ app.use(cookieParser());
 
 require('./config/config-passport');
 
-app.use(express.static(path.join(process.cwd(), 'dist')));
-
 app.use('/api', require('./routes'));
+app.use((req, res, next) => {
+  if (req.method === 'GET') {
+    res.sendFile(path.join(process.cwd(), 'dist/index.html'));
+  }
+});
 
 app.listen(PORT);
 console.log('Server is running on port ' + PORT);
