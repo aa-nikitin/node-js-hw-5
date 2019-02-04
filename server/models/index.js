@@ -2,10 +2,9 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(
-  'mongodb://user:qqqq0000@ds139944.mlab.com:39944/portal',
-  { useNewUrlParser: true }
-);
+mongoose.connect('mongodb://user:qqqq0000@ds139944.mlab.com:39944/portal', {
+  useNewUrlParser: true
+});
 require('./user');
 mongoose.connection.on('connected', () => {
   console.log(

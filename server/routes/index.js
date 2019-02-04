@@ -13,4 +13,9 @@ router.post('/authFromToken', controllers.authFromToken);
 
 router.get('/getNews', controllers.getNews);
 
+router.get('/getUsers', controllers.getUsers);
+
+router.post('/test', controllers.test.testPost);
+router.get('/test', controllers.test.testGet);
+
 module.exports = router;

@@ -29,9 +29,13 @@ const userSchema = new Schema({
   access_token: {
     type: String
   },
-  permission: {
-    type: Object
-  }
+  permissionId: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  permission: { type: Schema.Types.ObjectId, ref: 'permission' }
+  // per: { type: Schema.Types.ObjectId, ref: 'Permission' }
 });
 
 userSchema.methods.setPassword = function(password) {
@@ -46,4 +50,8 @@ userSchema.methods.setToken = function(token) {
   this.access_token = token;
 };
 
-module.exports = mongoose.model('user', userSchema);
+const User = mongoose.model('user', userSchema);
+
+module.exports = { User };
+
+// module.exports = mongoose.model('user', userSchema);
