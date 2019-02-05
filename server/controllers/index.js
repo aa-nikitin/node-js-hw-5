@@ -4,6 +4,7 @@ const saveNewUser = require('./saveNewUser.js');
 const getNews = require('./getNews.js');
 const getUsers = require('./getUsers.js');
 const updateUserPermission = require('./updateUserPermission.js');
+const deleteUser = require('./deleteUser.js');
 const test = require('./test.js');
 
 module.exports = {
@@ -13,5 +14,6 @@ module.exports = {
   getNews,
   getUsers,
   updateUserPermission,
+  deleteUser,
   test
 };

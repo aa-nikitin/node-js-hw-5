@@ -20,6 +20,8 @@ router.put(
   controllers.updateUserPermission
 );
 
+router.delete('/deleteUser/:id', controllers.deleteUser);
+
 router.get('/getNews', controllers.getNews);
 
 router.get('/getUsers', controllers.getUsers);
