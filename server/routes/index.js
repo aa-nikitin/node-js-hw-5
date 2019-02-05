@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const controllers = require('../controllers');
 
+const passport = require('passport');
+const authJwt = passport.authenticate('jwt', { session: false });
+
 // На все get-запросы отдавать index.html
 router.get('/', (req, res) => {
   res.render('dist');
@@ -10,6 +13,12 @@ router.get('/', (req, res) => {
 router.post('/saveNewUser', controllers.saveNewUser);
 router.post('/login', controllers.login);
 router.post('/authFromToken', controllers.authFromToken);
+
+router.put(
+  '/updateUserPermission/:id',
+  authJwt,
+  controllers.updateUserPermission
+);
 
 router.get('/getNews', controllers.getNews);
 

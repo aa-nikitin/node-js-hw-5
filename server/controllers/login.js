@@ -1,5 +1,5 @@
 const passport = require('passport');
-const { User } = require('../models/user');
+const User = require('../models/user');
 
 module.exports = (req, res, next) => {
   passport.authenticate('local', { session: false }, (err, user, info) => {

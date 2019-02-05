@@ -1,7 +1,7 @@
 // const mongoose = require('mongoose');
 // const User = mongoose.model('user');
-const { User } = require('../models/user');
-const { Permission } = require('../models/permission');
+const User = require('../models/user');
+const Permission = require('../models/permission');
 const uuidv4 = require('uuid/v4');
 const jwt = require('jwt-simple');
 const secret = require('../config/config.json').secret;
@@ -67,24 +67,3 @@ module.exports = (req, res, next) => {
     }
   });
 };
-
-// {
-//   chat: {
-//     C: true,
-//     R: true,
-//     U: true,
-//     D: true
-//   },
-//   news: {
-//     C: true,
-//     R: true,
-//     U: true,
-//     D: true
-//   },
-//   setting: {
-//     C: true,
-//     R: true,
-//     U: true,
-//     D: true
-//   }
-// }

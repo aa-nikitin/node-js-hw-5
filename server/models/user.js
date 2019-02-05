@@ -50,8 +50,6 @@ userSchema.methods.setToken = function(token) {
   this.access_token = token;
 };
 
-const User = mongoose.model('user', userSchema);
-
-module.exports = { User };
+module.exports = mongoose.model('user', userSchema);
 
 // module.exports = mongoose.model('user', userSchema);
