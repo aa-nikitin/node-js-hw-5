@@ -25,6 +25,7 @@ router.delete('/deleteUser/:id', controllers.deleteUser);
 router.get('/getNews', controllers.getNews);
 
 router.get('/getUsers', controllers.getUsers);
+router.put('/updateUser/:id', controllers.updateUser);
 
 router.post('/test', controllers.test.testPost);
 router.get('/test', controllers.test.testGet);
