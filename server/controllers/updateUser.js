@@ -4,14 +4,16 @@ const bCrypt = require('bcryptjs');
 module.exports = (req, res, next) => {
   const { id } = req.body;
   const getUpdateUserData = async (pass, oldPass) => {
-    const salt = await bCrypt.genSalt(10);
-    const password = await bCrypt.hash(pass, salt);
-    const currentUser = await User.findOne({ id: id });
+    if (pass && oldPass) {
+      const salt = await bCrypt.genSalt(10);
+      const password = await bCrypt.hash(pass, salt);
+      const currentUser = await User.findOne({ id: id });
 
-    if (!currentUser.validPassword(oldPass)) {
-      throw new Error(`Неправильный пароль!`);
+      if (!currentUser.validPassword(oldPass)) {
+        throw new Error(`Неправильный пароль!`);
+      }
+      return password;
     }
-    return password;
   };
 
   User.findOne({ id: id })

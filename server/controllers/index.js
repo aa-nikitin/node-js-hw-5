@@ -6,6 +6,7 @@ const getUsers = require('./getUsers.js');
 const updateUserPermission = require('./updateUserPermission.js');
 const deleteUser = require('./deleteUser.js');
 const updateUser = require('./updateUser.js');
+const saveUserImage = require('./saveUserImage.js');
 const test = require('./test.js');
 
 module.exports = {
@@ -17,5 +18,6 @@ module.exports = {
   updateUserPermission,
   deleteUser,
   updateUser,
+  saveUserImage,
   test
 };

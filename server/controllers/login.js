@@ -20,6 +20,11 @@ module.exports = (req, res, next) => {
           path: '/'
         });
       }
+      res.cookie('jwt', user.access_token, {
+        httpOnly: true,
+        expires: new Date(Date.now() + 60 * 24 * 1000),
+        path: '/'
+      });
       User.findOne({ id: user.id })
         .populate('permission')
         .then(userAuth => {

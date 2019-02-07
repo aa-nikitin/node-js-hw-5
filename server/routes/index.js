@@ -20,14 +20,16 @@ router.put(
   controllers.updateUserPermission
 );
 
-router.delete('/deleteUser/:id', controllers.deleteUser);
+router.delete('/deleteUser/:id', authJwt, controllers.deleteUser);
 
 router.get('/getNews', controllers.getNews);
 
-router.get('/getUsers', controllers.getUsers);
-router.put('/updateUser/:id', controllers.updateUser);
+router.get('/getUsers', authJwt, controllers.getUsers);
+router.put('/updateUser/:id', authJwt, controllers.updateUser);
+router.post('/saveUserImage/:id', authJwt, controllers.saveUserImage);
+// saveUserImage;
 
-router.post('/test', controllers.test.testPost);
-router.get('/test', controllers.test.testGet);
+// router.post('/test', controllers.test.testPost);
+// router.get('/test', controllers.test.testGet);
 
 module.exports = router;

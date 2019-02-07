@@ -22,6 +22,9 @@ const userSchema = new Schema({
   middleName: {
     type: String
   },
+  image: {
+    type: String
+  },
   hash: {
     type: String,
     required: [true, 'Password required']

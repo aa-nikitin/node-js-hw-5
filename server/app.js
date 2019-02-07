@@ -24,7 +24,7 @@ require('./config/config-passport');
 app.use('/api', require('./routes'));
 app.use((req, res, next) => {
   if (req.method === 'GET') {
-    res.sendFile(path.join(process.cwd(), 'dist/index.html'));
+    res.sendFile(path.join(process.cwd(), 'server/dist/index.html'));
   }
 });
 
