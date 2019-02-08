@@ -9,6 +9,8 @@ const updateUser = require('./updateUser.js');
 const saveUserImage = require('./saveUserImage.js');
 const newNews = require('./newNews.js');
 const deleteNews = require('./deleteNews.js');
+const updateNews = require('./updateNews.js');
+
 const test = require('./test.js');
 
 module.exports = {
@@ -23,5 +25,6 @@ module.exports = {
   saveUserImage,
   newNews,
   deleteNews,
+  updateNews,
   test
 };

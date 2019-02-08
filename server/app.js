@@ -5,6 +5,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 
+const http = require('http');
+const server = http.createServer(app);
+const io = require('socket.io').listen(server);
+const chat = require('./chat');
+
+chat(io);
+
 require('./models');
 
 app.use(bodyParser.text());

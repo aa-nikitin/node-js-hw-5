@@ -2,7 +2,7 @@ const User = require('../models/user');
 const bCrypt = require('bcryptjs');
 
 module.exports = (req, res, next) => {
-  const { id } = req.body;
+  const { id, oldPassword, password } = req.body;
   const getUpdateUserData = async (pass, oldPass) => {
     if (pass && oldPass) {
       const salt = await bCrypt.genSalt(10);
@@ -19,8 +19,6 @@ module.exports = (req, res, next) => {
   User.findOne({ id: id })
     .populate('permission')
     .then(user => {
-      const { oldPassword, password } = req.body;
-
       getUpdateUserData(password, oldPassword)
         .then(pass => {
           const hash = { hash: pass };
