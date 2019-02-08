@@ -17,17 +17,17 @@ module.exports = (req, res, next) => {
         user: users._id
       });
 
-      newNews
-        .save()
-        .then(() => {
-          News.find({})
-            .populate('user')
-            .then(news => {
-              return res.status(200).json(news);
-            })
-            .catch(next);
-        })
-        .catch(next);
+      return newNews.save();
     })
-    .catch(next);
+    .then(() => {
+      return News.find({}).populate('user');
+    })
+    .then(news => {
+      return res.status(200).json(news);
+    })
+    .catch(err => {
+      return res.status(400).json({
+        error: `Произошла ошибка при добавлении новости: ${err.message}`
+      });
+    });
 };

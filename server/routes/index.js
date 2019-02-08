@@ -23,6 +23,7 @@ router.put(
 
 router.get('/getNews', controllers.getNews);
 router.post('/newNews', authJwt, controllers.newNews);
+router.delete('/deleteNews/:id', authJwt, controllers.deleteNews);
 
 router.get('/getUsers', authJwt, controllers.getUsers);
 router.put('/updateUser/:id', authJwt, controllers.updateUser);
