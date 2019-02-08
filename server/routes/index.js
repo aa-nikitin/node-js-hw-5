@@ -14,20 +14,20 @@ router.post('/saveNewUser', controllers.saveNewUser);
 router.post('/login', controllers.login);
 router.post('/authFromToken', controllers.authFromToken);
 
+router.delete('/deleteUser/:id', authJwt, controllers.deleteUser);
 router.put(
   '/updateUserPermission/:id',
   authJwt,
   controllers.updateUserPermission
 );
 
-router.delete('/deleteUser/:id', authJwt, controllers.deleteUser);
-
 router.get('/getNews', controllers.getNews);
+router.post('/newNews', authJwt, controllers.newNews);
 
 router.get('/getUsers', authJwt, controllers.getUsers);
 router.put('/updateUser/:id', authJwt, controllers.updateUser);
 router.post('/saveUserImage/:id', authJwt, controllers.saveUserImage);
-// saveUserImage;
+// newNews;
 
 // router.post('/test', controllers.test.testPost);
 // router.get('/test', controllers.test.testGet);
